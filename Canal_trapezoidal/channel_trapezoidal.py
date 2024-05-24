@@ -10,7 +10,7 @@ class CanalTrapezoidal(NewtonRaphson):
     tiempo en segundos (s) y volumen en metros
     cúbicos (m3)"""
     
-    def __init__(self, q, b, s, n):
+    def __init__(self, q, b, z, s, n):
         super().__init__()
         if q <= 0 or b <= 0 or s <= 0 or n <= 0:
             raise ValueError("Todos los parámetros deben ser positivos.")
@@ -19,11 +19,14 @@ class CanalTrapezoidal(NewtonRaphson):
         self.b = b #m
         self.s = s # %%
         self.n = n #adimensional
+        self.z = z 
 
         self.peso_especifico = 1000 #kg/m3
         self.factor_seccion = (self.q * self.n)/(sqrt(self.s))
         self.tirante_calculado = 0
-        
+
+#Modificar formulas para canal trapezoidal
+
     def tirante(self):
         """x0 es la condición inicial, por temas de eficiencia de código
         se usará como aproximación la hipótesis de canal ancho"""
